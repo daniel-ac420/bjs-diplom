@@ -68,7 +68,7 @@ function checkMoneyStatus(arg) {
 		ProfileWidget.showProfile(arg.data);
 		moneyManager.setMessage(true, "Операция проведена успешно");
 	} else {
-		moneyManager.setMessage(true, "Операция была прервана из-за ошибки");
+		moneyManager.setMessage(false, arg.error);
 	}
 }
 
@@ -110,14 +110,14 @@ favoritesWidget.removeUserCallback = function(data) {
 function createList(arg) {
 	favoritesWidget.clearTable();
 	favoritesWidget.fillTable(arg);
-	favoritesWidget.updateUsersList(arg);
+	moneyManager.updateUsersList(arg);
 }
 
 function checkUser(arg) {
-	if (arg) {
+	if (arg.success) {
 		createList(arg.data);
 		favoritesWidget.setMessage(true, "Операция проведена успешно");
 	} else {
-		favoritesWidget.setMessage(false, "Операция была прервана из-за ошибки");
+		favoritesWidget.setMessage(false, arg.error);
 	}
 }

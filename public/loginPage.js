@@ -32,7 +32,7 @@ userForm.registerFormCallback = function(data) {
 		if (response.success) {
 			location.reload();
 		} else {
-			this.setLoginErrorMessage(response.error);
+			this.setRegisterErrorMessage(response.error);
 		}
 	})
 }
